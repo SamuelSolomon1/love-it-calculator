@@ -1,0 +1,108 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Calculator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+      #border{
+        border: 10px solid white;
+       background-color: pink;
+       border-radius: 20px;
+       box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+       color: rgb(184, 2, 132) !important;
+      }  
+      #text-size{
+        font-size: 60px;
+        font-family: serif;
+      }
+      #border1{
+        border: 2px ;
+       border-radius: 20px;
+       padding: 20px;
+       font-size: 30px;
+      }  
+      #border1:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: rgb(108, 59, 114, .16);
+        transition: 0.2s;
+  }
+   button{
+    background-color: rgb(96, 6, 90) !important;
+    color: rgb(245, 241, 244) !important;
+    font-size: 20px !important;
+   }
+      body{
+        background-image: url(https://i.pinimg.com/originals/04/2a/ef/042aefaccd947a8c07f36b11f228ba2e.gif);
+        background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat; 
+    color: rgb(80, 3, 78);
+    font-family: sans-serif;
+      }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3" id="border">
+                <h1 class="text-center" id="text-size">Love Calculator</h1><hr>
+                <form id="loveCalculatorForm" >
+                    <div class="form-group" id="border1" >
+                        <label for="yourName">What is your name?</label>
+                        <input type="text" class="form-control" id="yourName" required>
+                    </div>
+                    <div class="form-group" id="border1">
+                        <label for="partnerName">What is his/her name?</label>
+                        <input type="text" class="form-control" id="partnerName" required>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-block" id="calculateButton">Calculate</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal -->
+    <div class="modal fade" id="loveScoreModal" tabindex="-1" role="dialog" aria-labelledby="loveScoreModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loveScoreModalLabel">Love Score</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="loveScoreResult"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script> 
+        document.getElementById("calculateButton").addEventListener("click", function () {
+            let yourName = document.getElementById("yourName").value;
+            let partnerName = document.getElementById("partnerName").value;
+            let love_score = Math.floor(Math.random() * 100);
+            let resultText = '';
+            if (love_score > 80) {
+                resultText = ("Your love score is " + love_score + "%." + " You are a good match!");
+            } else if (love_score > 40 && love_score <= 80) {
+                resultText =("Your love score is " + love_score + "%" + " You are both sweet but this is not the right time ");
+            } else if (love_score <= 30) {
+                resultText = ("Your love score is " + love_score + "%" + " You both have other priorities");
+            } else {
+                resultText = ("Your love score is " + love_score + "% " + " I think you are good to be friends not lovers.") ;
+            }
+            document.getElementById("loveScoreResult").textContent = resultText;
+            $("#loveScoreModal").modal("show");
+        });</script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
